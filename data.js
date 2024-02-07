@@ -27,3 +27,18 @@ function modifyTask(todos, id, newName, newUrgency) {
         todos[indexToReplace] = modifiedTask;
     }
 }
+
+function deleteTask(todos, id) {
+    let indexToDelete = null;
+    for (let i = 0; i < todos.length; i++){
+        if (todos[i].id == id){
+            indexToDelete = i;
+            break;
+        }
+    }
+    if (indexToDelete !== null) {
+        todos.splice(indexToDelete, 1);
+    } else {
+        console.log("Unable to find task");
+    }
+}

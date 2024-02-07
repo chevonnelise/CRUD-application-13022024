@@ -15,24 +15,26 @@
 </head>
 
 <body>
-    <div class="mb-3">
-        <input type="text" id="taskName" class="form-control" placeholder="Task Name">
-    </div>
-    <div class="mb-3">
-        <select id="taskUrgency" class="form-control">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-        </select>
-    </div>
-    <button id="addTodo" class="btn btn-primary mb-3">Add Todo</button>
-
-    <div id="container">
-        <h1>To-do List</h1>
+    <div class="container mt-5">
+        <h1 class="text-center">Packing List</h1>      
+      <div class="mb-3">
+        <form id="todo-form">
+	        <input type="text" id="taskName" class="form-control" placeholder="Task Name">
+	        </div>
+	        <div class="mb-3">
+	            <select id="taskUrgency" class="form-control">
+	                <option value="low">Low</option>
+	                <option value="medium">Medium</option>
+	                <option value="high">High</option>
+	            </select>
+	        </div>
+	        <input type="submit" id="addTodo" class="btn btn-primary mb-3" value="Add To Do"/>
+	      </form>
+        
+      
         <ul id="todoList" class="list-group">
+            <!-- Todo items will be appended here -->
         </ul>
-
-
     </div>
 
 

@@ -1,12 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
-    function main() {
-        let todos = [];
+    async function main() {
+        let todos = await loadTasks();
 
+        const addTodoButton = document.querySelector("#addTodo");
+        addTodoButton.addEventListener('click', function (){
         // add Event listeners
-        const form = document.querySelector("#todo-form");
-        form.addEventListener('submit', function (event) {
-            event.preventDefault(); // This stops the form from being submitted the traditional way
-
+        // const form = document.querySelector("#todo-form");
+        // form.addEventListener('submit', function (event) {
+        //     event.preventDefault(); // This stops the form from being submitted the traditional way
+        
+        const saveButton = document.querySelector("#save-btn");
+            saveButton.addEventListener("click", async function (){
+                saveTasks(todos);
+            })
+            
             const taskNameInput = document.querySelector("#taskName");
             const taskName = taskNameInput.value;
 
@@ -17,11 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 addTodo(todos, taskName, taskUrgency);
                 renderTodos(todos);
                 taskNameInput.value = '';
-            }
         }
-
-        )
+    });
+    //     )
     };
+
     function renderTodos(todos) {
         const todoList = document.querySelector('#todoList');
         todoList.innerHTML = '';

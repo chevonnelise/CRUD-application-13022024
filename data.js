@@ -1,3 +1,8 @@
+// add function
+const BASE_JSON_BIN_URL = "https://api.jsonbin.io/v3/b";
+const BIN_ID = "65c59f4f266cfc3fde87d272";
+const MASTER_KEY = "$2a$10$bGGtgHiNbK3z4vgOgJ28J.fxGlg8OD9LqM/yfLGJp7zF6XnFV0hoa";
+
 let todos = [];
 
 function addTodo(todos, name, urgency){
@@ -41,4 +46,21 @@ function deleteTask(todos, id) {
     } else {
         console.log("Unable to find task");
     }
+}
+
+async function loadTasks() {
+    const response = await axios.get(BASE_JSON_BIN_URL + "/" + BIN_ID + "/latest");
+    console.log(response.data);
+    return response.data.record;
+}
+
+
+async function saveTasks(todos) {
+    const response = await axios.put(`${BASE_JSON_BIN_URL}/${BIN_ID}`, todos, {
+        headers: {
+            "Content-Type": "application/json",
+            "X-Master-Key": MASTER_KEY
+        }
+    });
+    return response.data;
 }
